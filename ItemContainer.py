@@ -11,17 +11,17 @@ class ItemContainer:
     def __init__(self):
         self._items = []
 
-    def add_item(self, new_item : Item):
+    def add_item(self, new_item: Item):
         if new_item not in self._items:
             print("adding new item " + str(new_item))
             self._items.append(new_item)
 
-    def serialize(self, file_name : str):
+    def serialize(self, file_name: str):
         with open(file_name, "w+") as outfile:
             for item in self._items:
                 outfile.write(str(item) + "\n")
 
-    def deserialize(self, file_name : str):
+    def deserialize(self, file_name: str):
         try:
             with open(file_name, "r") as infile:
                 for line in infile:

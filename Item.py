@@ -10,10 +10,10 @@ class Item:
         self._steam_market_price = Sum("0E")
         self._backpack_price = Sum("0E")
 
-    def update_backpack_price(self, new_price : Sum):
+    def update_backpack_price(self, new_price: Sum):
         self._backpack_price = new_price
 
-    def update_steam_market_price(self, new_price : Sum):
+    def update_steam_market_price(self, new_price: Sum):
         self._steam_market_price = new_price
 
     def get_url_ending(self):
