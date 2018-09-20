@@ -7,9 +7,8 @@ from Item import Item
 
 class SyncedItemCollector:
 
-    steam_market_search_url = 'https://steamcommunity.com/market/search/render/'
-
-    pagesize = 100
+    STEAM_MARKET_SEARCH_URL = 'https://steamcommunity.com/market/search/render/'
+    PAGESIZE = 100
 
     def __init__(self):
         self._parameters = {
@@ -27,7 +26,7 @@ class SyncedItemCollector:
         item_list.extend(self._items)
 
     def _get_new_response(self):
-        self._response = get(SyncedItemCollector.steam_market_search_url, self._parameters)
+        self._response = get(SyncedItemCollector.STEAM_MARKET_SEARCH_URL, self._parameters)
 
     def _get_all_items(self):
         while self._total_item_count is None or self._parameters["start"] < self._total_item_count:
@@ -36,7 +35,7 @@ class SyncedItemCollector:
             if self._total_item_count is None:
                 self._set_total_item_count()
 
-            self._parameters["start"] += 100
+            self._parameters["start"] += SyncedItemCollector.PAGESIZE
 
     def _get_successful_response(self):
         status_code = 0
