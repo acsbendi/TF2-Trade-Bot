@@ -1,3 +1,4 @@
+from AsyncItemCollector import AsyncItemCollector
 from Item import Item
 from ItemContainer import ItemContainer
 from SyncedItemCollector import SyncedItemCollector
@@ -25,6 +26,10 @@ items = [
 synced_item_collector = SyncedItemCollector()
 
 #synced_item_collector.fill_item_list(items)
+
+async_item_collector = AsyncItemCollector()
+
+async_item_collector.fill_item_list(items)
 
 item_container = ItemContainer()
 
