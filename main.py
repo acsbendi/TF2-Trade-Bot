@@ -24,7 +24,7 @@ items = [
 
 synced_item_collector = SyncedItemCollector()
 
-synced_item_collector.fill_item_list(items)
+#synced_item_collector.fill_item_list(items)
 
 item_container = ItemContainer()
 

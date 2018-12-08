@@ -3,30 +3,16 @@ from typing import List
 from requests import get
 
 from Item import Item
+from ItemCollector import ItemCollector
 
 
-class SyncedItemCollector:
-
-    STEAM_MARKET_SEARCH_URL = 'https://steamcommunity.com/market/search/render/'
-    PAGESIZE = 100
+class SyncedItemCollector(ItemCollector):
 
     def __init__(self):
-        self._parameters = {
-            "appid" : 440,
-            "norender" : True,
-            "count" : 100,
-            "start" : 0
-        }
-        self._total_item_count = None
-        self._response = None
-        self._items = List[Item]
-
-    def fill_item_list(self, item_list: List[Item]):
-        self._get_all_items()
-        item_list.extend(self._items)
+        super().__init__()
 
     def _get_new_response(self):
-        self._response = get(SyncedItemCollector.STEAM_MARKET_SEARCH_URL, self._parameters)
+        self._response = get(ItemCollector.STEAM_MARKET_SEARCH_URL, self._parameters)
 
     def _get_all_items(self):
         while self._total_item_count is None or self._parameters["start"] < self._total_item_count:
